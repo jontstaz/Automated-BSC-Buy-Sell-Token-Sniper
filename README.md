@@ -72,8 +72,7 @@ The following json entries are for the mini audit settings. Set all of them to f
 -	The bot only buys tokens whose liquidity is paired with Wrapped BNB (WBNB). You could alter the code to buy tokens paired with another currency if you wanted.
 -	Please check that you have enough BNB in your wallet to afford sniping new tokens. If you don’t the bot will not work.
 -	Please be careful when editing the config.json file. If you delete a comma or quotation mark etc. the bot will not work and throw an error.
--	To launch the bot, run the ‘launchBSCTokenSniper.bat’. The bot should then open in a cmd window and load.
--	Don’t left click in the cmd window as it will enable select mode and stop the output (you will see ‘Select’ in the title). If this happens right click your mouse to deselect it. 
+-   You can use PowerShell or WSL2 and ensure you have Python3+ installed if you're a Windows user. If you're a Mac/Linux user, simply use the Terminal.
 
 ## FAQs
 
