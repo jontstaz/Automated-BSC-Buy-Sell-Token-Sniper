@@ -10,8 +10,7 @@ An advanced python bot which automatically buys tokens on the Binance Smart Chai
 ## Setup
 1)	Install all dependencies `pip install -r requirements.txt`
 2)	Edit `config.json` file with your node URL (or leave default), wallet address, private key, sellProfit, Amount to spend per snipe and BSCScan API key.
-3)	In command prompt (assuming you are using windows) type 'python' and press enter, and check that it is recognized by the computer. If you get a message that says it isn't recognized, then change the 'launchBSCTokenSniper.bat' file and replace 'python' with the path to your python program's executable file (make sure the filepath is in "" quotes).
-4)	Run `python tokenSniper.py` to start the program
+3)	Run `python tokenSniper.py` to start the program and start sniping! $$$$
 
 
 ## Configuration File (_config.json_)
