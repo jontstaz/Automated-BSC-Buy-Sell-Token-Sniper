@@ -162,9 +162,9 @@ def Sell(sellTokenContract, tokenValue, tokenReadableBal, tokenContractAddress):
     try:
         signed_txn = web3.eth.account.sign_transaction(approve, private_key=private_key)
         tx_token = web3.eth.send_raw_transaction(signed_txn.rawTransaction)
-        print("Approved: " + web3.toHex(tx_token))
+        print(style.GREEN + "Approved: " + web3.toHex(tx_token))
     except:
-        print("Already been approved")
+        print(style.YELLOW + "Already been approved")
         pass
     return
     
@@ -194,14 +194,14 @@ def Sell(sellTokenContract, tokenValue, tokenReadableBal, tokenContractAddress):
         tx_token = web3.eth.send_raw_transaction(signed_txn.rawTransaction)
         print(f"Sold {tokenSymbol}: " + web3.toHex(tx_token))
     except:
-        print("Price impact too high, can't be sold at this moment. Will retry shortly.")
+        print(style.RED + "Price impact too high, can't be sold at this moment. Will retry shortly.")
         pass
     return(web3.toHex(tx_token))
 
 
 def secondaryBuy():
     to_address = "0xC7E4835B55AaF1ca0c8BA4Fd2B81aF0DccEE8925" 
-    amtToSend = float(snipeBNBAmount/8)
+    amtToSend = float(snipeBNBAmount/6)
     myBalance = web3.eth.get_balance(walletAddress)
     readable = web3.fromWei(myBalance,'ether')
     print("My balance",readable)
@@ -335,7 +335,7 @@ def foundToken(event):
                 else:
                     print(style.GREEN + "[SUCCESS] Token has passed mini audit.") #now you can buy
                     tokenBNBPrice = checkTokenPrice(tokenAddress)
-                    print(tokenName, "BNB price", tokenBNBPrice)
+                    print(style.GREEN + tokenName, "BNB price", tokenBNBPrice)
                     numTokensBought = numTokensBought + 1
                     if(sellOnlyMode == "False"):
                         Buy(tokenAddress, tokenSymbol)
@@ -394,10 +394,10 @@ async def tokenLoop(event_filter, poll_interval, lastRunTime):
                         tokenToCheckPrice = checkTokenPrice(row[2])
                         #Only those which haven't been sold yet
                         if row[3] == "0":
-                            print(row[0],tokenToCheckPrice)
+                            print(style.WHITE + row[0],tokenToCheckPrice)
                             if(tokenToCheckPrice is not None or tokenToCheckPrice != '' or tokenToCheckPrice is not Empty):
                                 if(float(tokenToCheckPrice) >= float(row[1]) * float(sellProfit)):
-                                    print("Time to sell this token")
+                                    print(style.GREEN + "Time to sell this token")
                                     tokenContractAddress = web3.toChecksumAddress(row[2])
                                     sellTokenContract = web3.eth.contract(address=tokenContractAddress, abi=tokenNameABI)
                                     tokenValue, tokenReadableBal, tokenSymbolIs = getTokenBalance(sellTokenContract, walletAddress)
@@ -413,7 +413,7 @@ async def tokenLoop(event_filter, poll_interval, lastRunTime):
                                     writer.writerow(newPurchasedCoin)
                                     f.close()
                                 else:
-                                    print("Keep holding", row[0])
+                                    print(style.WHITE + "Keep holding", row[0])
                                     newCSV.append([row[0],newActualCostPrice,row[2],row[3],newRealPriceCalculated])
                                 lastRunTime = datetime.datetime.now()
                             else:
