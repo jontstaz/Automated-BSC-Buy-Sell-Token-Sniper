@@ -7,7 +7,7 @@ from pathlib import Path
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, Checkbutton
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -60,17 +60,18 @@ entry_bg_1 = canvas.create_image(
     185.0,
     image=entry_image_1
 )
-entry_1 = Entry(
+bnbAmt = Entry(
     bd=0,
     bg="#FFFFFF",
     highlightthickness=0
 )
-entry_1.place(
+bnbAmt.place(
     x=503.0,
     y=165.0,
     width=269.0,
     height=38.0
 )
+bnbAmt.insert(0, "0.05")
 
 canvas.create_text(
     500.0,
@@ -97,17 +98,19 @@ entry_bg_2 = canvas.create_image(
     292.0,
     image=entry_image_2
 )
-entry_2 = Entry(
+takeProfit = Entry(
     bd=0,
     bg="#FFFFFF",
     highlightthickness=0
 )
-entry_2.place(
+takeProfit.place(
     x=503.0,
     y=272.0,
     width=269.0,
     height=38.0
 )
+
+takeProfit.insert(0,"1.5")
 
 canvas.create_text(
     500.0,
@@ -134,17 +137,19 @@ entry_bg_3 = canvas.create_image(
     399.0,
     image=entry_image_3
 )
-entry_3 = Entry(
+gasAmt = Entry(
     bd=0,
     bg="#FFFFFF",
     highlightthickness=0
 )
-entry_3.place(
+gasAmt.place(
     x=503.0,
     y=379.0,
     width=269.0,
     height=38.0
 )
+
+gasAmt.insert(0,"300000")
 
 entry_image_4 = PhotoImage(
     file=relative_to_assets("entry_4.png"))
@@ -153,17 +158,19 @@ entry_bg_4 = canvas.create_image(
     291.0,
     image=entry_image_4
 )
-entry_4 = Entry(
+privateKey = Entry(
     bd=0,
     bg="#FFFFFF",
     highlightthickness=0
 )
-entry_4.place(
+privateKey.place(
     x=38.0,
     y=271.0,
     width=370.0,
     height=38.0
 )
+
+privateKey.insert(0,"BSC Wallet Private Key")
 
 entry_image_5 = PhotoImage(
     file=relative_to_assets("entry_5.png"))
@@ -172,17 +179,19 @@ entry_bg_5 = canvas.create_image(
     185.0,
     image=entry_image_5
 )
-entry_5 = Entry(
+bscAddress = Entry(
     bd=0,
     bg="#FFFFFF",
     highlightthickness=0
 )
-entry_5.place(
+bscAddress.place(
     x=38.0,
     y=165.0,
     width=370.0,
     height=38.0
 )
+
+bscAddress.insert(0,"BSC Address")
 
 entry_image_6 = PhotoImage(
     file=relative_to_assets("entry_6.png"))
@@ -191,17 +200,19 @@ entry_bg_6 = canvas.create_image(
     503.0,
     image=entry_image_6
 )
-entry_6 = Entry(
+pancakeSwapRouterAddress = Entry(
     bd=0,
     bg="#FFFFFF",
     highlightthickness=0
 )
-entry_6.place(
+pancakeSwapRouterAddress.place(
     x=38.0,
     y=483.0,
     width=370.0,
     height=38.0
 )
+
+pancakeSwapRouterAddress.insert(0,"0x10ED43C718714eb63d5aA57B78B54704E256024E")
 
 entry_image_7 = PhotoImage(
     file=relative_to_assets("entry_7.png"))
@@ -210,17 +221,19 @@ entry_bg_7 = canvas.create_image(
     397.0,
     image=entry_image_7
 )
-entry_7 = Entry(
+bscNode = Entry(
     bd=0,
     bg="#FFFFFF",
     highlightthickness=0
 )
-entry_7.place(
+bscNode.place(
     x=38.0,
     y=377.0,
     width=370.0,
     height=38.0
 )
+
+bscNode.insert(0,"https://bsc-dataseed.binance.org/")
 
 canvas.create_text(
     500.0,
@@ -301,12 +314,12 @@ entry_bg_8 = canvas.create_image(
     712.5403747558594,
     image=entry_image_8
 )
-entry_8 = Text(
+logBox = Text(
     bd=0,
     bg="#FFFFFF",
     highlightthickness=0
 )
-entry_8.place(
+logBox.place(
     x=35.0,
     y=589.0807495117188,
     width=1047.0,
@@ -342,14 +355,14 @@ canvas.create_text(
 
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
-button_1 = Button(
+stopButton = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
+    command=lambda: print("Stop Button clicked"),
     relief="flat"
 )
-button_1.place(
+stopButton.place(
     x=782.0,
     y=476.0,
     width=294.0,
@@ -358,14 +371,14 @@ button_1.place(
 
 button_image_2 = PhotoImage(
     file=relative_to_assets("button_2.png"))
-button_2 = Button(
+startButton = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_2 clicked"),
+    command=lambda: print("Start Button clicked"),
     relief="flat"
 )
-button_2.place(
+startButton.place(
     x=477.0,
     y=470.0,
     width=294.0,
@@ -412,22 +425,6 @@ image_1 = canvas.create_image(
     image=image_image_1
 )
 
-canvas.create_rectangle(
-    864.0,
-    213.0,
-    884.0,
-    233.0,
-    fill="#FFFFFF",
-    outline="")
-
-canvas.create_rectangle(
-    867.782470703125,
-    214.282470703125,
-    881.217529296875,
-    227.717529296875,
-    fill="#000000",
-    outline="")
-
 canvas.create_text(
     894.0,
     213.0,
@@ -437,21 +434,14 @@ canvas.create_text(
     font=("Montserrat Regular", 14 * -1)
 )
 
-canvas.create_rectangle(
-    864.0,
-    255.0,
-    884.0,
-    275.0,
-    fill="#FFFFFF",
-    outline="")
-
-canvas.create_rectangle(
-    867.782470703125,
-    256.282470703125,
-    881.217529296875,
-    269.717529296875,
-    fill="#000000",
-    outline="")
+sourceCodeCheck = Checkbutton(
+    bd=0,
+    highlightthickness=0
+)
+sourceCodeCheck.place(
+    x=864.0,
+    y=213.0,
+)
 
 canvas.create_text(
     894.0,
@@ -462,21 +452,14 @@ canvas.create_text(
     font=("Montserrat Regular", 14 * -1)
 )
 
-canvas.create_rectangle(
-    864.0,
-    298.0,
-    884.0,
-    318.0,
-    fill="#FFFFFF",
-    outline="")
-
-canvas.create_rectangle(
-    867.782470703125,
-    299.282470703125,
-    881.217529296875,
-    312.717529296875,
-    fill="#000000",
-    outline="")
+validatePancake2Check = Checkbutton(
+    bd=0,
+    highlightthickness=0
+)
+validatePancake2Check.place(
+    x=864.0,
+    y=255.0,
+)
 
 canvas.create_text(
     894.0,
@@ -487,21 +470,14 @@ canvas.create_text(
     font=("Montserrat Regular", 14 * -1)
 )
 
-canvas.create_rectangle(
-    864.0,
-    340.0,
-    884.0,
-    360.0,
-    fill="#FFFFFF",
-    outline="")
-
-canvas.create_rectangle(
-    867.782470703125,
-    341.282470703125,
-    881.217529296875,
-    354.717529296875,
-    fill="#000000",
-    outline="")
+mintFunctionCheck = Checkbutton(
+    bd=0,
+    highlightthickness=0
+)
+mintFunctionCheck.place(
+    x=864.0,
+    y=298.0,
+)
 
 canvas.create_text(
     894.0,
@@ -512,21 +488,14 @@ canvas.create_text(
     font=("Montserrat Regular", 14 * -1)
 )
 
-canvas.create_rectangle(
-    864.0,
-    383.0,
-    884.0,
-    403.0,
-    fill="#FFFFFF",
-    outline="")
-
-canvas.create_rectangle(
-    867.782470703125,
-    384.282470703125,
-    881.217529296875,
-    397.717529296875,
-    fill="#000000",
-    outline="")
+honeypotCheck = Checkbutton(
+    bd=0,
+    highlightthickness=0
+)
+honeypotCheck.place(
+    x=864.0,
+    y=340.0,
+)
 
 canvas.create_text(
     894.0,
@@ -536,5 +505,15 @@ canvas.create_text(
     fill="#CBCFD4",
     font=("Montserrat Regular", 14 * -1)
 )
+
+pancakeV1RouterCheck = Checkbutton(
+    bd=0,
+    highlightthickness=0
+)
+pancakeV1RouterCheck.place(
+    x=864.0,
+    y=383.0,
+)
+
 window.resizable(False, False)
 window.mainloop()
