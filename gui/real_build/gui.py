@@ -10,14 +10,6 @@ from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, Checkbutton
 
 
-def startButtonPressed():
-    canvas.itemconfigure(profitTextDisplay, text="0.000")
-    canvas.itemconfigure(balanceTextDisplay, text="0.000")
-    canvas.itemconfigure(noSnipedTextDisplay, text="0")
-    canvas.itemconfigure(noSoldTextDisplay, text="0")
-    
-
-
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 
@@ -28,14 +20,14 @@ def relative_to_assets(path: str) -> Path:
 
 window = Tk()
 
-window.geometry("1108x884")
+window.geometry("1108x874")
 window.configure(bg = "#30363D")
-window.wm_title("BSC Sniper Bot")
+
 
 canvas = Canvas(
     window,
     bg = "#30363D",
-    height = 884,
+    height = 874,
     width = 1108,
     bd = 0,
     highlightthickness = 0,
@@ -44,8 +36,8 @@ canvas = Canvas(
 
 canvas.place(x = 0, y = 0)
 canvas.create_text(
-    31.0,
-    294.0,
+    35.0,
+    147.0,
     anchor="nw",
     text="BSC WALLET ADDRESS",
     fill="#CBCFD4",
@@ -53,8 +45,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    31.0,
-    359.0,
+    35.0,
+    212.0,
     anchor="nw",
     text="Enter your Binance Smart Chain Address",
     fill="#CBCFD4",
@@ -64,8 +56,8 @@ canvas.create_text(
 entry_image_1 = PhotoImage(
     file=relative_to_assets("entry_1.png"))
 entry_bg_1 = canvas.create_image(
-    633.5,
-    332.0,
+    637.5,
+    185.0,
     image=entry_image_1
 )
 bnbAmt = Entry(
@@ -74,17 +66,16 @@ bnbAmt = Entry(
     highlightthickness=0
 )
 bnbAmt.place(
-    x=499.0,
-    y=312.0,
+    x=503.0,
+    y=165.0,
     width=269.0,
     height=38.0
 )
-
-bnbAmt.insert(0,"0.05")
+bnbAmt.insert(0, "0.05")
 
 canvas.create_text(
-    496.0,
-    294.0,
+    500.0,
+    147.0,
     anchor="nw",
     text="BNB AMOUNT",
     fill="#CBCFD4",
@@ -92,8 +83,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    496.0,
-    359.0,
+    500.0,
+    212.0,
     anchor="nw",
     text="BNB Amount to spend on each snipe",
     fill="#CBCFD4",
@@ -103,8 +94,8 @@ canvas.create_text(
 entry_image_2 = PhotoImage(
     file=relative_to_assets("entry_2.png"))
 entry_bg_2 = canvas.create_image(
-    633.5,
-    439.0,
+    637.5,
+    292.0,
     image=entry_image_2
 )
 takeProfit = Entry(
@@ -113,8 +104,8 @@ takeProfit = Entry(
     highlightthickness=0
 )
 takeProfit.place(
-    x=499.0,
-    y=419.0,
+    x=503.0,
+    y=272.0,
     width=269.0,
     height=38.0
 )
@@ -122,8 +113,8 @@ takeProfit.place(
 takeProfit.insert(0,"1.5")
 
 canvas.create_text(
-    496.0,
-    401.0,
+    500.0,
+    254.0,
     anchor="nw",
     text="TAKE PROFIT",
     fill="#CBCFD4",
@@ -131,8 +122,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    496.0,
-    466.0,
+    500.0,
+    319.0,
     anchor="nw",
     text="Take Profit amount (Multiple), eg. “3” = 3x BNB Amount",
     fill="#CBCFD4",
@@ -142,8 +133,8 @@ canvas.create_text(
 entry_image_3 = PhotoImage(
     file=relative_to_assets("entry_3.png"))
 entry_bg_3 = canvas.create_image(
-    633.5,
-    546.0,
+    637.5,
+    399.0,
     image=entry_image_3
 )
 gasAmt = Entry(
@@ -152,8 +143,8 @@ gasAmt = Entry(
     highlightthickness=0
 )
 gasAmt.place(
-    x=499.0,
-    y=526.0,
+    x=503.0,
+    y=379.0,
     width=269.0,
     height=38.0
 )
@@ -163,8 +154,8 @@ gasAmt.insert(0,"300000")
 entry_image_4 = PhotoImage(
     file=relative_to_assets("entry_4.png"))
 entry_bg_4 = canvas.create_image(
-    219.0,
-    438.0,
+    223.0,
+    291.0,
     image=entry_image_4
 )
 privateKey = Entry(
@@ -173,8 +164,8 @@ privateKey = Entry(
     highlightthickness=0
 )
 privateKey.place(
-    x=34.0,
-    y=418.0,
+    x=38.0,
+    y=271.0,
     width=370.0,
     height=38.0
 )
@@ -184,8 +175,8 @@ privateKey.insert(0,"BSC Wallet Private Key")
 entry_image_5 = PhotoImage(
     file=relative_to_assets("entry_5.png"))
 entry_bg_5 = canvas.create_image(
-    219.0,
-    332.0,
+    223.0,
+    185.0,
     image=entry_image_5
 )
 bscAddress = Entry(
@@ -194,8 +185,8 @@ bscAddress = Entry(
     highlightthickness=0
 )
 bscAddress.place(
-    x=34.0,
-    y=312.0,
+    x=38.0,
+    y=165.0,
     width=370.0,
     height=38.0
 )
@@ -205,8 +196,8 @@ bscAddress.insert(0,"BSC Address")
 entry_image_6 = PhotoImage(
     file=relative_to_assets("entry_6.png"))
 entry_bg_6 = canvas.create_image(
-    219.0,
-    650.0,
+    223.0,
+    503.0,
     image=entry_image_6
 )
 pancakeSwapRouterAddress = Entry(
@@ -215,8 +206,8 @@ pancakeSwapRouterAddress = Entry(
     highlightthickness=0
 )
 pancakeSwapRouterAddress.place(
-    x=34.0,
-    y=630.0,
+    x=38.0,
+    y=483.0,
     width=370.0,
     height=38.0
 )
@@ -226,8 +217,8 @@ pancakeSwapRouterAddress.insert(0,"0x10ED43C718714eb63d5aA57B78B54704E256024E")
 entry_image_7 = PhotoImage(
     file=relative_to_assets("entry_7.png"))
 entry_bg_7 = canvas.create_image(
-    219.0,
-    544.0,
+    223.0,
+    397.0,
     image=entry_image_7
 )
 bscNode = Entry(
@@ -236,8 +227,8 @@ bscNode = Entry(
     highlightthickness=0
 )
 bscNode.place(
-    x=34.0,
-    y=524.0,
+    x=38.0,
+    y=377.0,
     width=370.0,
     height=38.0
 )
@@ -245,8 +236,8 @@ bscNode.place(
 bscNode.insert(0,"https://bsc-dataseed.binance.org/")
 
 canvas.create_text(
-    496.0,
-    508.0,
+    500.0,
+    361.0,
     anchor="nw",
     text="GAS AMOUNT",
     fill="#CBCFD4",
@@ -254,8 +245,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    496.0,
-    573.0,
+    500.0,
+    426.0,
     anchor="nw",
     text="Take Profit amount (Multiple), eg. “3” = 3x BNB Amount",
     fill="#CBCFD4",
@@ -263,8 +254,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    31.0,
-    400.0,
+    35.0,
+    253.0,
     anchor="nw",
     text="BSC WALLET PRIVATE KEY",
     fill="#CBCFD4",
@@ -272,8 +263,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    31.0,
-    465.0,
+    35.0,
+    318.0,
     anchor="nw",
     text="Enter your Private Key",
     fill="#CBCFD4",
@@ -281,8 +272,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    31.0,
-    506.0,
+    35.0,
+    359.0,
     anchor="nw",
     text="BSC NODE",
     fill="#CBCFD4",
@@ -290,8 +281,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    31.0,
-    571.0,
+    35.0,
+    424.0,
     anchor="nw",
     text="Leave default or enter your own BSC Node URL",
     fill="#CBCFD4",
@@ -299,8 +290,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    31.0,
-    612.0,
+    35.0,
+    465.0,
     anchor="nw",
     text="PANCAKESWAP ROUTER ADDRESS",
     fill="#CBCFD4",
@@ -308,8 +299,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    31.0,
-    677.0,
+    35.0,
+    530.0,
     anchor="nw",
     text="Leave default or update if PancakeSwap Router Address has changed",
     fill="#CBCFD4",
@@ -319,8 +310,8 @@ canvas.create_text(
 entry_image_8 = PhotoImage(
     file=relative_to_assets("entry_8.png"))
 entry_bg_8 = canvas.create_image(
-    554.5,
-    789.5,
+    558.5,
+    712.5403747558594,
     image=entry_image_8
 )
 logBox = Text(
@@ -329,15 +320,24 @@ logBox = Text(
     highlightthickness=0
 )
 logBox.place(
-    x=31.0,
-    y=720.0,
+    x=35.0,
+    y=589.0807495117188,
     width=1047.0,
-    height=137.0
+    height=244.91925048828125
 )
 
 canvas.create_text(
-    28.0,
-    700.0,
+    51.867919921875,
+    606.3478393554688,
+    anchor="nw",
+    text="Type here...",
+    fill="#CBCFD4",
+    font=("Montserrat Regular", 14 * -1)
+)
+
+canvas.create_text(
+    32.0,
+    566.0,
     anchor="nw",
     text="LOGS",
     fill="#CBCFD4",
@@ -345,8 +345,8 @@ canvas.create_text(
 )
 
 canvas.create_text(
-    860.0,
-    303.0,
+    864.0,
+    156.0,
     anchor="nw",
     text="SMART CONTRACT AUDIT CHECKS",
     fill="#CBCFD4",
@@ -355,65 +355,65 @@ canvas.create_text(
 
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
-button_1 = Button(
+stopButton = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
+    command=lambda: print("Stop Button clicked"),
     relief="flat"
 )
-button_1.place(
-    x=778.0,
-    y=623.0,
+stopButton.place(
+    x=782.0,
+    y=476.0,
     width=294.0,
     height=90.0
 )
 
 button_image_2 = PhotoImage(
     file=relative_to_assets("button_2.png"))
-button_2 = Button(
+startButton = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=startButtonPressed,
+    command=lambda: print("Start Button clicked"),
     relief="flat"
 )
-button_2.place(
-    x=473.0,
-    y=617.0,
+startButton.place(
+    x=477.0,
+    y=470.0,
     width=294.0,
     height=90.0
 )
 
 canvas.create_rectangle(
-    453.0,
-    288.0,
-    453.0,
-    713.0,
+    457.0,
+    141.0,
+    457.0,
+    589.0,
     fill="#FFFFFF",
     outline="")
 
 canvas.create_rectangle(
-    805.0,
-    288.0,
-    806.003173828125,
-    601.0,
+    809.0,
+    141.0,
+    810.003173828125,
+    454.0,
     fill="#FFFFFF",
     outline="")
 
 canvas.create_rectangle(
-    453.0,
-    600.9887084960938,
-    1081.0,
-    602.0,
+    457.0,
+    453.98870849609375,
+    1085.0,
+    455.0,
     fill="#FFFFFF",
     outline="")
 
 canvas.create_rectangle(
-    28.0,
-    288.0,
-    1081.0,
-    288.01129150390625,
+    32.0,
+    141.0,
+    1085.0,
+    141.01129150390625,
     fill="#FFFFFF",
     outline="")
 
@@ -421,15 +421,13 @@ image_image_1 = PhotoImage(
     file=relative_to_assets("image_1.png"))
 image_1 = canvas.create_image(
     554.0,
-    54.0,
+    71.0,
     image=image_image_1
 )
 
-
-
 canvas.create_text(
-    890.0,
-    360.0,
+    894.0,
+    213.0,
     anchor="nw",
     text="Source Code",
     fill="#CBCFD4",
@@ -441,13 +439,13 @@ sourceCodeCheck = Checkbutton(
     highlightthickness=0
 )
 sourceCodeCheck.place(
-    x=860.0,
-    y=360.0,
+    x=864.0,
+    y=213.0,
 )
 
 canvas.create_text(
-    890.0,
-    402.0,
+    894.0,
+    255.0,
     anchor="nw",
     text="Validate Pancake V2",
     fill="#CBCFD4",
@@ -459,13 +457,13 @@ validatePancake2Check = Checkbutton(
     highlightthickness=0
 )
 validatePancake2Check.place(
-    x=860.0,
-    y=402.0,
+    x=864.0,
+    y=255.0,
 )
 
 canvas.create_text(
-    890.0,
-    445.0,
+    894.0,
+    298.0,
     anchor="nw",
     text="Mint Function",
     fill="#CBCFD4",
@@ -477,13 +475,13 @@ mintFunctionCheck = Checkbutton(
     highlightthickness=0
 )
 mintFunctionCheck.place(
-    x=860.0,
-    y=445.0,
+    x=864.0,
+    y=298.0,
 )
 
 canvas.create_text(
-    890.0,
-    487.0,
+    894.0,
+    340.0,
     anchor="nw",
     text="Honeypot",
     fill="#CBCFD4",
@@ -495,13 +493,13 @@ honeypotCheck = Checkbutton(
     highlightthickness=0
 )
 honeypotCheck.place(
-    x=860.0,
-    y=487.0,
+    x=864.0,
+    y=340.0,
 )
 
 canvas.create_text(
-    890.0,
-    530.0,
+    894.0,
+    383.0,
     anchor="nw",
     text="Pancake V1 Router",
     fill="#CBCFD4",
@@ -513,146 +511,9 @@ pancakeV1RouterCheck = Checkbutton(
     highlightthickness=0
 )
 pancakeV1RouterCheck.place(
-    x=860.0,
-    y=530.0,
+    x=864.0,
+    y=383.0,
 )
 
-canvas.create_text(
-    162.0,
-    231.0,
-    anchor="nw",
-    text="BNB Balance",
-    fill="#FFFFFF",
-    font=("MontserratRoman Regular", 16 * -1)
-)
-
-image_image_2 = PhotoImage(
-    file=relative_to_assets("image_2.png"))
-image_2 = canvas.create_image(
-    214.0,
-    186.0,
-    image=image_image_2
-)
-
-balanceTextDisplay = canvas.create_text(
-    192.0,
-    188.0,
-    anchor="nw",
-    text="1.345",
-    fill="#FFFFFF",
-    font=("MontserratRoman Bold", 20 * -1)
-)
-
-image_image_3 = PhotoImage(
-    file=relative_to_assets("image_3.png"))
-image_3 = canvas.create_image(
-    218.0,
-    156.0,
-    image=image_image_3
-)
-
-canvas.create_text(
-    910.0,
-    227.0,
-    anchor="nw",
-    text="Profit",
-    fill="#FFFFFF",
-    font=("MontserratRoman Regular", 16 * -1)
-)
-
-image_image_4 = PhotoImage(
-    file=relative_to_assets("image_4.png"))
-image_4 = canvas.create_image(
-    931.0,
-    186.0,
-    image=image_image_4
-)
-
-profitTextDisplay = canvas.create_text(
-    903.0,
-    184.0,
-    anchor="nw",
-    text="0.236",
-    fill="#FFFFFF",
-    font=("MontserratRoman Bold", 20 * -1)
-)
-
-
-
-image_image_5 = PhotoImage(
-    file=relative_to_assets("image_5.png"))
-image_5 = canvas.create_image(
-    931.0,
-    155.0,
-    image=image_image_5
-)
-
-canvas.create_text(
-    395.0,
-    231.0,
-    anchor="nw",
-    text="Tokens Sniped",
-    fill="#FFFFFF",
-    font=("MontserratRoman Regular", 16 * -1)
-)
-
-image_image_6 = PhotoImage(
-    file=relative_to_assets("image_6.png"))
-image_6 = canvas.create_image(
-    453.0,
-    186.0,
-    image=image_image_6
-)
-
-noSnipedTextDisplay = canvas.create_text(
-    442.0,
-    184.0,
-    anchor="nw",
-    text="25",
-    fill="#FFFFFF",
-    font=("MontserratRoman Bold", 20 * -1)
-)
-
-image_image_7 = PhotoImage(
-    file=relative_to_assets("image_7.png"))
-image_7 = canvas.create_image(
-    453.0,
-    155.0,
-    image=image_image_7
-)
-
-canvas.create_text(
-    645.0,
-    230.0,
-    anchor="nw",
-    text="Tokens Sold",
-    fill="#FFFFFF",
-    font=("MontserratRoman Regular", 16 * -1)
-)
-
-image_image_8 = PhotoImage(
-    file=relative_to_assets("image_8.png"))
-image_8 = canvas.create_image(
-    692.0,
-    186.0,
-    image=image_image_8
-)
-
-noSoldTextDisplay = canvas.create_text(
-    681.0,
-    184.0,
-    anchor="nw",
-    text="13",
-    fill="#FFFFFF",
-    font=("MontserratRoman Bold", 20 * -1)
-)
-
-image_image_9 = PhotoImage(
-    file=relative_to_assets("image_9.png"))
-image_9 = canvas.create_image(
-    692.0,
-    155.0,
-    image=image_image_9
-)
 window.resizable(False, False)
 window.mainloop()
