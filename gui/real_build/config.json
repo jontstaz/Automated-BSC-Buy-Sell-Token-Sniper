@@ -1,0 +1,5 @@
+{
+   "transactionRevertTimeSeconds": "10000",
+   "bscScanAPIKey": "<YOUR_BSCSCAN_API_KEY>",
+   "sellOnlyMode": "False"
+}

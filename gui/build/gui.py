@@ -425,8 +425,6 @@ image_1 = canvas.create_image(
     image=image_image_1
 )
 
-
-
 canvas.create_text(
     890.0,
     360.0,

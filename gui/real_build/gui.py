@@ -7,7 +7,11 @@ from pathlib import Path
 
 # from tkinter import *
 # Explicit imports to satisfy Flake8
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, Checkbutton
+from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, Checkbutton, INSERT
+#from tokenSniper import initBot, startStop
+
+def logToLogBox(msg):
+    logBox.insert(INSERT, msg + '\n')
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -235,6 +239,7 @@ bscNode.place(
 
 bscNode.insert(0,"https://bsc-dataseed.binance.org/")
 
+
 canvas.create_text(
     500.0,
     361.0,
@@ -353,37 +358,7 @@ canvas.create_text(
     font=("Montserrat Regular", 10 * -1)
 )
 
-button_image_1 = PhotoImage(
-    file=relative_to_assets("button_1.png"))
-stopButton = Button(
-    image=button_image_1,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("Stop Button clicked"),
-    relief="flat"
-)
-stopButton.place(
-    x=782.0,
-    y=476.0,
-    width=294.0,
-    height=90.0
-)
 
-button_image_2 = PhotoImage(
-    file=relative_to_assets("button_2.png"))
-startButton = Button(
-    image=button_image_2,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: print("Start Button clicked"),
-    relief="flat"
-)
-startButton.place(
-    x=477.0,
-    y=470.0,
-    width=294.0,
-    height=90.0
-)
 
 canvas.create_rectangle(
     457.0,
@@ -513,6 +488,38 @@ pancakeV1RouterCheck = Checkbutton(
 pancakeV1RouterCheck.place(
     x=864.0,
     y=383.0,
+)
+
+button_image_1 = PhotoImage(
+    file=relative_to_assets("button_1.png"))
+stopButton = Button(
+    image=button_image_1,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: logToLogBox("stop"),
+    relief="flat"
+)
+stopButton.place(
+    x=782.0,
+    y=476.0,
+    width=294.0,
+    height=90.0
+)
+
+button_image_2 = PhotoImage(
+    file=relative_to_assets("button_2.png"))
+startButton = Button(
+    image=button_image_2,
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: logToLogBox("start"),
+    relief="flat"
+)
+startButton.place(
+    x=477.0,
+    y=470.0,
+    width=294.0,
+    height=90.0
 )
 
 window.resizable(False, False)
